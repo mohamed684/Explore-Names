@@ -17,3 +17,14 @@ function gen_alphabet(): array {
 
     return $alphabet;
 }
+
+
+function render($view, $params) {
+    extract($params);
+
+    ob_start();
+    require __DIR__ . '/../views/pages/' . $view;
+    $content = ob_get_clean();
+
+    require __DIR__ . '/../views/layouts/base.php';
+}

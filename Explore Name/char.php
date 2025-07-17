@@ -8,5 +8,6 @@ $char = (string) ($_GET['char'] ?? '');
 $names = fetch_names_by_intial($char);
 
 render('char.php', [
-    'names' => $names
+    'names' => $names,
+    'char' => $char
 ]);

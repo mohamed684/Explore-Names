@@ -6,12 +6,6 @@ function fetch_names_by_intial(string $char, int $page = 1, int $perPage = 10): 
 
     $offset = ($page - 1) * $perPage;
 
-
-    if($char > 1) {
-        $char = $char[0];
-    }
-    $char = strtoupper($char);
-
     $stmt = $pdo->prepare('SELECT DISTINCT name FROM names WHERE name LIKE :expr ORDER BY name ASC LIMIT :limit OFFSET :offset');
     $stmt->bindValue('expr', "{$char}%");
     $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);

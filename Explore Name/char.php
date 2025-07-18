@@ -4,6 +4,17 @@ require __DIR__ . '/inc/all.inc.php';
 
 $char = (string) ($_GET['char'] ?? '');
 
+if($char > 1) {
+    $char = $char[0];
+}
+$char = strtoupper($char);
+$alphabet = gen_alphabet();
+
+if(!in_array($char, $alphabet)) {
+    header('Location: index.php');
+    die();
+}
+
 $page = (int) ($_GET['page'] ?? 1);
 
 $perPage = 10;
